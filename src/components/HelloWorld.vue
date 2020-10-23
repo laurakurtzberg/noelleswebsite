@@ -10,12 +10,13 @@
       :to="bookmark.linkTo"
     >
       <div class="bookmark">
-        <img :src="bookmark.imageURL" :alt="bookmark.imageALT" />
+        <div class="img-container">
+          <img :src="bookmark.imageURL" :alt="bookmark.imageALT" />
+        </div>
         <h3>{{bookmark.name}}</h3>
       </div>
     </router-link>
     </div>
-    <img class="bottom-image" src="../../public/cute-boat-animals.png" alt="cute animals in a boat" />
   </div>
 </template>
 
@@ -35,20 +36,20 @@ export default {
       },
       {
         name: "Compliment Delivery Box",
-        imageURL: "flower.png",
-        imageALT: "cute flower",
+        imageURL: "present.png",
+        imageALT: "present",
         linkTo: "/compliments"
       },
       {
         name: "My Mixtape for You",
-        imageURL: "flower.png",
-        imageALT: "cute flower",
-        linkTo: "/mixtape"
+        imageURL: "stereo.png",
+        imageALT: "boom box",
+        linkTo: "/spotify"
       },
       {
         name: "Adulting Game",
-        imageURL: "flower.png",
-        imageALT: "cute flower",
+        imageURL: "celebrate.png",
+        imageALT: "adulting character",
         linkTo: "/adulting"
       },
       {
@@ -64,13 +65,6 @@ export default {
 
 <!-- "scoped" attribute limits CSS to this component only -->
 <style scoped>
-  .bottom-image {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-55%);
-    width: 400px;
-  }
   .homepage-container {
     padding: 0;
     margin: 0;
@@ -83,6 +77,9 @@ export default {
     border-radius: 5px;
     padding: 30px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+  }
+  .bookmark:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 6px 24px 0px, rgba(167, 134, 223, 1) 0px 0px 0px 1px;
   }
   .bookmark img {
     max-width: 75px;
@@ -107,5 +104,23 @@ export default {
   }
   a {
     color: #42b983;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .bookmarks {
+      flex-direction: column;
+    }
+    h3 {
+      writing-mode: horizontal-tb;
+      letter-spacing: 0em;
+    }
+    .bookmark {
+      height: 70px;
+    }
+    .bookmark img {
+      padding-bottom: 0px;
+      position: static;
+      float: left;
+    }
   }
 </style>
