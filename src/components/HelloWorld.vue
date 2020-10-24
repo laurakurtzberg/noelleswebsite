@@ -17,6 +17,15 @@
       </div>
     </router-link>
     </div>
+    <div class="animation">
+      <div v-for="index in 25" :key="index">
+        <img
+          class="heart"
+          src="heart.png"
+          v-bind:style="{ left: index * windowWidth/25 + 'px', animationDelay: Math.random() * 5 + 's' }"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -27,6 +36,7 @@ export default {
     msg: String
   },
   data: () => ({
+    windowWidth: window.innerWidth,
     Bookmarks: [
       {
         name: "Photobook",
@@ -60,6 +70,18 @@ export default {
       }
     ]
   }),
+  methods: {
+    handleWindowResize(event) {
+      console.log('RESIZEEEEE');
+      this.windowWidth = event.currentTarget.innerWidth;
+    },
+  },
+  beforeDestroy: function () {
+    window.removeEventListener('resize', this.handleWindowResize)
+  },
+  mounted() {
+    window.addEventListener('resize', this.handleWindowResize);
+  },
 }
 </script>
 
@@ -69,6 +91,9 @@ export default {
     padding: 0;
     margin: 0;
     width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
   }
   .bookmark {
     color: #0e172c;
@@ -104,6 +129,38 @@ export default {
   }
   a {
     color: #42b983;
+  }
+  div.animation {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 10000;
+  }
+  .heart {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    animation: 6s ease-in hearts normal infinite;
+    z-index: -1;
+  }
+
+  @keyframes hearts {
+    0% {
+      transform: rotate(20deg);
+      opacity: 0;
+    }
+    50% {
+      transform: rotate(-20deg);
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(20deg);
+      opacity: 0;
+      top: -350px;
+    }
   }
 
   @media only screen and (max-width: 1000px) {
