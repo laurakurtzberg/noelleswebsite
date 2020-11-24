@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Letter />
     <HelloWorld msg="Noelle, I Made You a Website!"/>
     <Footer/>
   </div>
@@ -8,12 +9,14 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import Footer from './components/Footer.vue'
+import Letter from './components/Letter.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    Footer
+    Footer,
+    Letter
   }
 }
 </script>
