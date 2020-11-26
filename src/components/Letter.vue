@@ -1,18 +1,24 @@
 <template>
   <div class="letter-container">
-    <div class="letter-icon" v-on:click="open=!open">
+    <div id="letter-icon" v-on:click="open=!open">
       <img
         class="heart-decoration"
         src="heart.png"
       />
       <div class="caret"></div>
     </div>
-    <transition name="expand">
-      <aside v-if="open">
-        <p>Hi Noelle!</p>
-        <p>Happy Birthday!</p>
-      </aside>
-    </transition>
+    <aside v-bind:class="{ expanded: open }" v-on:click="open=!open">
+      <p>11/27/2020</p>
+      <p>Dear Noelle,</p>
+      <p>
+        Happy Birthday!!! I hope you like this little corner of the internet that I
+        set aside to collect some funny things I made for you! I want you to know that
+        you are the sweetest bun I've ever met. Click the complement delivery box
+        to read even more true facts about yourself! From me to you - thank you for
+        being my girlfriend, and making this world a better place with your existence!
+      </p>
+      <p>-Laura</p>
+    </aside>
   </div>
 </template>
 
@@ -62,31 +68,42 @@ export default {
     top: 12px;
     right: 15px;
   }
-  div.letter-icon {
+  div#letter-icon {
     background: white;
     border: 2px solid rgba(167, 134, 223, 1);
     border-radius: 5px;
     width: 60px;
     height: 45px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+    transition: all .4s;
   }
-
+  div#letter-icon:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 6px 24px 0px, rgba(167, 134, 223, 1) 0px 0px 0px 1px;
+    opacity: 70%;
+  }
   aside {
     position: absolute;
+    background: white;
     right: 0;
-    width: 140px;
+    height: 0px;
+    width: 0px;
     border: 1px solid grey;
     border-radius: 5px;
-    padding: 10px;
+    padding: 0px;
+    border-width: 0px;
     margin-top: 10px;
+    transition: all 2s;
+    overflow: hidden;
+  }
+  .expanded {
+    width: 340px;
+    height: 320px;
+    padding: 10px;
+    border: 1px solid grey;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
   }
   aside p {
     text-align: left;
-    line-height: 1em;
-  }
-  .expand-enter-active, .expand-leave-active {
-    transition: opacity .5s;
-  }
-  .expand-enter, .expand-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
+    font-weight: 300;
   }
 </style>

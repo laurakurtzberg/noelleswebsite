@@ -1,6 +1,6 @@
 <template>
   <div class="homepage-container">
-    <h1>{{ msg }}</h1>
+    <h1>Noelle, I made you a website!</h1>
     <div class="bookmarks">
     <router-link
       v-for="(bookmark, index) in Bookmarks"

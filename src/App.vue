@@ -1,20 +1,19 @@
 <template>
   <div id="app">
+    <router-view />
     <Letter />
-    <HelloWorld msg="Noelle, I Made You a Website!"/>
     <Footer/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 import Footer from './components/Footer.vue'
 import Letter from './components/Letter.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     Footer,
     Letter
   }
@@ -22,7 +21,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Londrina+Solid&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Londrina+Solid:wght@300;400&display=swap');
 
 html {
   padding: 0;
@@ -30,6 +29,7 @@ html {
 }
 h1 {
   font-family: 'Londrina Shadow', cursive;
+  font-weight: 400;
   color: #0e172c;
   font-size: 2.3em;
   letter-spacing: 0.1em;
