@@ -29,7 +29,7 @@ html {
 }
 h1 {
   font-family: 'Londrina Shadow', cursive;
-  font-weight: 400;
+  font-weight: bold;
   color: #0e172c;
   font-size: 2.3em;
   letter-spacing: 0.1em;

@@ -86,7 +86,7 @@ export default {
 </script>
 
 <!-- "scoped" attribute limits CSS to this component only -->
-<style scoped>
+<style>
   .homepage-container {
     padding: 0;
     margin: 0;
