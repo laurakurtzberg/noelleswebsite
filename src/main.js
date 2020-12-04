@@ -7,9 +7,18 @@ import Pairing from "./components/Pairing";
 import Photobook from "./components/Photobook";
 import { TurnPlugin } from "vue-turnjs";
 import "vue-turnjs/dist/vue-turnjs.esm.css";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faEdit)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+
 Vue.use(TurnPlugin);
 
 Vue.config.productionTip = false
+
 Vue.use(VueRouter);
 
 // My routes
