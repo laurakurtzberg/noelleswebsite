@@ -1,5 +1,10 @@
 <template>
-  <p>Photos!</p>
+<div>
+  <router-link class="back-button" tag="button" :to="'/'">
+    back
+  </router-link>
+  <h1>Photobook</h1>
+</div>
 </template>
 
 <script>

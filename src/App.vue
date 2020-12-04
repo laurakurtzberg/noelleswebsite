@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <router-view />
+    <transition
+        name="fade"
+        mode="out-in"
+      >
+        <router-view />
+      </transition>
     <Letter />
     <Footer/>
   </div>
@@ -21,7 +26,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Londrina+Solid:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Londrina+Solid:wght@300;400&family=Satisfy&display=swap');
 
 html {
   padding: 0;
@@ -51,4 +56,16 @@ h1 {
   right: 0;
   border: 4px #fec7d7 solid;
 }
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
+}
+
 </style>

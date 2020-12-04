@@ -132,7 +132,7 @@ export default {
   }
   div.animation {
     position: absolute;
-    bottom: 0;
+    bottom: -30px;
     width: 100%;
     height: 50px;
     z-index: 10000;
