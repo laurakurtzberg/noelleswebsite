@@ -5,6 +5,9 @@ import HelloWorld from "./components/HelloWorld";
 import Compliments from "./components/Compliments";
 import Pairing from "./components/Pairing";
 import Photobook from "./components/Photobook";
+import { TurnPlugin } from "vue-turnjs";
+import "vue-turnjs/dist/vue-turnjs.esm.css";
+Vue.use(TurnPlugin);
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
