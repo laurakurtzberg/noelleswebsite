@@ -63,7 +63,7 @@ export default {
         linkTo: "/adulting"
       },
       {
-        name: "Food and Drink Pairing",
+        name: "Dinner Coupon Generator",
         imageURL: "pie.png",
         imageALT: "pie",
         linkTo: "/pairing"
