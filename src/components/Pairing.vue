@@ -4,7 +4,10 @@
     back
   </router-link>
   <h1>Dinner Coupon Generator</h1>
-  <button class="randomize" v-on:click="randomize">randomize</button>
+
+  <p class="description">Cielito, I would love to make dinner for you!</p>
+  <p class="description">You can write in anything you like by clicking on the little edit icons.</p>
+  <p class="description last">Or try something random:</p><button class="randomize" v-on:click="randomize">randomize</button>
   <div id="box">
     <h4>This Coupon is Valid for 1 Dinner</h4>
     <p class="coupon-text">Made by Laura for Noelle</p>
@@ -12,15 +15,15 @@
     <div class="coupon-contents">
       <p class="label">
         Main Course:
-        <input v-if="mainEditing" v-model="main" placeholder="edit me" @keydown.enter="activateMainEditing"/>
-        <span v-if="!mainEditing" class="name">{{main}}</span>
+        <input v-if="mainEditing" v-model="food" placeholder="edit me" @keyup.enter="activateMainEditing"/>
+        <span v-if="!mainEditing" class="name">{{food}}</span>
       </p>
       <i class="edit-button main" v-on:click="activateMainEditing" title="type in something else">
         <font-awesome-icon icon="edit" />
       </i>
       <p class="label">
         Drink:
-        <input v-if="drinkEditing" v-model="drinks[drinkIndex]" placeholder="edit me" @keydown.enter="activateDrinkEditing"/>
+        <input v-if="drinkEditing" v-model="drink" placeholder="edit me" @keydown.enter="activateDrinkEditing"/>
         <span v-if="!drinkEditing" class="name">{{drink}}</span>
       </p>
       <i class="edit-button drink" v-on:click="activateDrinkEditing" title="type in something else">
@@ -41,9 +44,15 @@ export default {
       drinkEditing: false,
       foodIndex: Math.floor(Math.random()*12),
       drinkIndex: Math.floor(Math.random()*10),
-      maincourses: ["Thai Curry", "Grilled Cheese", "Baked Cheesy Asparagus", "Potato Gratin", "Pumpkin Pie", "Falafel Pita", "Naan Pizza", "Avocado Kale Salad", "Fresh Tacos", "Spaghetti", "Cranberry Quinoa Bowl", "Matcha Pancakes", "Lentil Soup", "Homemade Poke Bowl"],
-      drinks: ["Red Wine", "White Wine", "Custom Cocktail", "Margarita", "Mezcal", "Thai Coffee", "Hot Tea", "Arnold Palmer", "Lemonade", "Fresh Fruit Smoothie", "Sparkling Lemon Water"]
+      foods: ["Thai Curry", "Grilled Cheese", "Baked Cheesy Asparagus", "Potato Gratin", "Pumpkin Pie", "Falafel Pita", "Naan Pizza", "Avocado Kale Salad", "Fresh Tacos", "Spaghetti", "Cranberry Quinoa Bowl", "Matcha Pancakes", "Lentil Soup", "Homemade Poke Bowl"],
+      drinks: ["Red Wine", "Orange Juice", "Custom Cocktail", "Margarita", "Mezcal", "Thai Coffee", "Hot Tea", "Arnold Palmer", "Lemonade", "Fresh Fruit Smoothie", "Sparkling Lemon Water"],
+      food: '',
+      drink: ''
     }
+  },
+  mounted() {
+    this.drink = this.drinks[this.drinkIndex];
+    this.food = this.foods[this.foodIndex];
   },
   methods: {
     activateMainEditing: function() {
@@ -55,12 +64,22 @@ export default {
     randomize: function() {
       this.foodIndex = Math.floor(Math.random()*12);
       this.drinkIndex = Math.floor(Math.random()*10);
+      this.drink = this.drinks[this.drinkIndex];
+      this.food = this.foods[this.foodIndex];
     }
   }
 }
 </script>
 
 <style scoped>
+p.description {
+  font-weight: 100;
+}
+p.description.last {
+  margin-top: 40px;
+  margin-right: 20px;
+  display: inline-block;
+}
 button.randomize {
   background: #fec7d7;
   color: #0e172c;
@@ -68,6 +87,7 @@ button.randomize {
   font-weight: bold;
   padding: 5px 7px;
   min-width: 95px;
+  display: inline-block;
 }
 div.coupon-contents {
   margin-top: 30px;
